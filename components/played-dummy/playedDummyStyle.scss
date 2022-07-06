@@ -1,0 +1,78 @@
+main{
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+    width: 100vw;
+    // overflow: auto;
+    .container-top{
+        // flex: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        // align-items: center;
+        .row{
+            // height: 100%;
+            // width: 100%;
+                .player{
+                    #playerOption{
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: center;
+                        button{
+                            background: none;
+                            border: none;
+                            margin-bottom: 25px;
+
+                                :hover{
+                                background: rgba(156, 111, 5, 0.073);
+                                border-radius: 8px;
+                                :focus-visible{
+                                 background: rgba(156, 111, 5, 0.073);
+                                border-radius: 8px;
+                                }
+                            }   
+                        }
+                    } 
+                }
+            }
+        }
+
+    .com{
+        padding: 0;
+        #comOption{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+            button{
+                background: none;
+                border: none;
+                margin-bottom: 25px;
+            }
+    }
+    .versus{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
+        height: 50%;
+        padding: 0;
+            #displayResult{
+                font-size: 72px;
+                display: flex;
+                flex-direction: column;
+            }
+    }
+    }
+    .container{
+        margin-top: -200px;
+    }
+}
+
+
+
