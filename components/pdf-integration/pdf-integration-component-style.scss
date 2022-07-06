@@ -1,0 +1,17 @@
+#pdfIntegrationComponent {
+    height: 100vh;
+    background-image: url(../../public/assets/img/the-games-bg-use.png);
+    background-size: cover;
+    background-position: center;
+
+    button{
+        background-color: aqua;
+        color: red;
+        border: 1px solid white;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+}
+}
