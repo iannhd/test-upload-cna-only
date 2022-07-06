@@ -1,5 +1,5 @@
 // import NavbarComponent from "../components/navbarLanding";
-// import Header from '../header';
+import Header from '../header';
 import { Button } from 'reactstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +16,7 @@ export default function LandingPageComponent() {
   return(
     <>
       <div className='landingpage'>
-        {/* <Header title='Landing Page'/> */}
+        <Header title='Landing Page'/>
         <div className='wrapperUp'>
           <div className='content'>
             <h1>PLAY TRADITIONAL GAME</h1>
