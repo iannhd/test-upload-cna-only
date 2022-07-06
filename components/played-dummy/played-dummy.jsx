@@ -10,7 +10,7 @@ import {auth,db} from "../../services/firebase"
 import { ref, onValue, get, child, set } from 'firebase/database';
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from 'next/router';
-// import Header from '../headerLogin'
+import Header from '../headerLogin'
 
 export default function GamePRSPage() {
 
@@ -142,7 +142,7 @@ export default function GamePRSPage() {
 
   return(
     <>
-      {/* <Header title='Rock Paper Scissors Game'/> */}
+      <Header title='Rock Paper Scissors Game'/>
       <main>
         <div className='container-top'>
             <div className='row text-center'>

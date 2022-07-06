@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Input } from "reactstrap";
-// import Header from "../header"
+import Header from "../header"
 import { auth, db } from "../../services/firebase";
 import { ref, set, onValue, serverTimestamp } from "firebase/database";
 
@@ -97,7 +97,7 @@ export default function RegisterPageComponent() {
   return (
     <>
       <section className="register-section">
-        {/* <Header title="Register" /> */}
+        <Header title="Register" />
             <div className="container">
                     <div className="card login-card">
                         <form onSubmit={handleSubmit} className="row" >

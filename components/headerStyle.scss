@@ -1,0 +1,45 @@
+.navbar {
+  background-color: rgba(48, 48, 48, 0.6)!important;
+  line-height: 30px;
+  .navbrand {
+    a{
+      color: white;
+      text-decoration: none;
+      font-weight: 700;;
+    }
+  }
+
+  .active{
+    .text-link{
+      color: white;
+      font-weight: 600;
+    }
+  }
+
+  .navitem {
+    font-weight: 600;
+    color: white;
+    
+    &.navitem:hover{
+      color: white;
+    }
+    
+  }
+
+  .text-link{
+    text-decoration: none;
+    color: rgb(189, 189, 189);
+    padding: 0 5px;
+
+    &.text-link:hover{
+      color: white;
+    }
+  } 
+
+  .navbarUser{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+}
