@@ -1,0 +1,26 @@
+.errorSection{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../public//assets/img/requirements.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        color: white;
+    }
+    a{
+        font-size: 40px;
+        text-decoration: none;
+        font-weight: 700;
+        color: rgb(226, 226, 226);
+    }
+    a:hover{
+            color: white;
+    }
+    #countdown{
+        font-size: 36px;
+        color: white;
+    }
+}
