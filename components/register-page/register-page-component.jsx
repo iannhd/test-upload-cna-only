@@ -63,6 +63,7 @@ export default function RegisterPageComponent() {
       alert(err.message);
     }
     console.log(email, password);
+    
   };
 
 
