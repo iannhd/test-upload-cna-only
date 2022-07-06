@@ -136,7 +136,7 @@ export default function RegisterPageComponent() {
                             />
                         </div>
                         <div>
-                          <h3>Testing Games</h3>
+                          <h3>Select Games</h3>
                           <Input type="select"  value={"21c39cc6-289b-47c4-879d-d52e47f8d7b8"} onChange={(e) => {setGameChoice(e.target.value)}} name="select" id="exampleSelect">
                           {gameList && gameList.map((game)=>{
                             return(
