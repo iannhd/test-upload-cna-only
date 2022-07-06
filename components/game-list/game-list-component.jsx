@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import Link  from "next/link";
 import { useRouter } from "next/router";
-// import Header from "../headerLogin";
+import Header from "../headerLogin";
 
 const GameList = () => {
   const [gameList, setGameList] = useState([]);
@@ -58,7 +58,7 @@ const GameList = () => {
   return (
     <> 
       <section className="game-list">
-      {/* <Header title='Game List' /> */}
+      <Header title='Game List' />
       <Container>
           <Button
             color="warning"
