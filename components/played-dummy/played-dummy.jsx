@@ -26,12 +26,15 @@ export default function GamePRSPage() {
   const gameDb = '21c39cc6-289b-47c4-879d-d52e47f8d7b8'
   function fetchUserData() {
     // const dbRef = ref(getDatabase());
-    get(child(ref(db), `users/${user.uid}`))
+    // get(child(ref(db), `users/${user.uid}`))
+    get(child(ref(db), `users/${user.displayName}`))
       .then((snapshot) => {
         if (snapshot.exists()) {
           // console.log(snapshot.val(), '==> snapshot');
           setUserData(snapshot.val());
           console.log(userData, '==> set userdata');
+          // console.log(Object.entries(userData), '==> set userdata');
+          console.log(user, '==> ini user')
         } else {
           console.log("No data available");
         }
@@ -52,8 +55,9 @@ export default function GamePRSPage() {
   }
 
   function writeUserData() {
-    set(ref(db, 'users/' + user.uid), {
+    set(ref(db, 'users/' + user.displayName), {
       ...userData, total_score: + score,
+      // ...Object.entries(userData)[2], total_score: + score,
       play_count: + playCount
       
     });
