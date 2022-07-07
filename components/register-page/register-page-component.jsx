@@ -30,33 +30,34 @@ export default function RegisterPageComponent() {
       if (user) alert("Register Success");
       console.log(user, "=====> ini user");
       await updateProfile(user, {displayName : username})
+      console.log(user.photoURL, "=====> ini user setelah update");
       // router.push('/login-page')
       console.log(gameChoice, "====> ini game choice");
 
-      let today = new Date()
+      // let today = new Date()
 
-      let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      // let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
-      let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      // let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-      let dateTime = date+' '+time;
-      await set(ref(db, `users/` + user.displayName),
+      // let dateTime = date+' '+time;
+      // await set(ref(db, `users/` + user.displayName),
         //  {[]
         //   email: email,
         //   username: username,
         //   game: gameChoice
         // });
-      {
-        email : email, 
-        username : username, 
-        game_id : {
-          game_id : gameChoice,
-          game_name : gameName,
-          play_count : 0,
-          score : 0
-          },
-        created_at : dateTime
-        })
+      // {
+      //   email : email, 
+      //   username : username, 
+      //   game_id : {
+      //     game_id : gameChoice,
+      //     game_name : gameName,
+      //     play_count : 0,
+      //     score : 0
+      //     },
+      //   created_at : dateTime
+      //   })
       
     } catch (err) {
       console.error(err);
