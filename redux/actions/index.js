@@ -6,13 +6,13 @@ import { ref, get, child } from "firebase/database";
 export function setToken(uid) {
     try {
         console.log(uid, '==> uid dari set token');
-        return (dispatch, getState) => {
+        return (dispatch, state = null) => {
             get(child(ref(db), `users/${uid}`))
             .then((snapshot) => {
                 if (snapshot.exists()) {
                     console.log("masuk siniii");
                     const getUser = snapshot.val()
-                    console.log(getUser, '=====> hore hore hore hore hore ');
+                    console.log(getUser, '=====> dari actions redux ');
                 dispatch({
                     type: 'SET_USERNAME',
                     payload: getUser.username
@@ -22,8 +22,8 @@ export function setToken(uid) {
                     payload: getUser.game_id.score
                 })
                 dispatch({
-                    type: "USER_LOGOUT",
-                    payload: console.log(typeof(getUser))
+                    type: 'USER_LOGOUT',
+                    payload: state
                 })
                     } else {
                         console.log("No data available");

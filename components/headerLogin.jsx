@@ -18,7 +18,6 @@ export default function Header(props) {
     const router = useRouter()
     const username = useSelector(state => state.username)
     const totalScore = useSelector(state => state.total_score)
-
     useEffect(() => {
         console.log(username, '==> username header login');
         console.log(totalScore, '==> totalScore header login');
@@ -32,14 +31,15 @@ export default function Header(props) {
         e.preventDefault();
         // const logout = useSelector(state => state.userName)
         const auth = getAuth();
-        signOut(auth).then(() => {
+        signOut(auth)
+        .then(() => {
         sessionStorage.removeItem('token')
-        logout()
-        }).catch((error) => {
-            console.log(error.message, '====> dari logout');
+        router.reload()
+        })
+        .catch((error) => {
+            console.log(error.message, '====> error dari logout');
         });
         console.log('User signed out!');
-        // router.push('/')
     }
     return(
         <div>
