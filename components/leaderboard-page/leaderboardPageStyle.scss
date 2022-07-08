@@ -1,0 +1,29 @@
+.leaderboard-page{
+    background: url('../../public//assets//img/main-bg-figma.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    
+    color: white;
+
+    .text-heading{
+        margin-top: 25px;
+    }
+    table{
+        margin-top: 35px;
+        background-color: rgba(0, 0, 0, 0.841);
+        color: white;
+        border-radius: 8px;
+        span{
+            font-size: 24px;
+            line-height: 35px;
+            cursor: pointer;
+            
+        }
+        span:hover{
+            color: rgb(211, 179, 0);
+        }
+        
+    }
+}
