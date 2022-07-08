@@ -75,7 +75,7 @@ export default function LeaderboardPageComponent(){
             }
             <Container>
                 <Row>
-                <h1>ROCK PAPER SCISSORS</h1>
+                <h1 className='text-heading text-center'>ROCK PAPER SCISSORS</h1>
                     <Col>
                     <Table className='text-center'>
                     <thead>
@@ -85,7 +85,7 @@ export default function LeaderboardPageComponent(){
                         <th>Score</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='p-4'>
                     <tr>
                         <th>
             {  
@@ -93,7 +93,7 @@ export default function LeaderboardPageComponent(){
 
                         return(
                             <>
-                            {el.username}<br/>
+                            <span>{el.username.toUpperCase()}</span><br/>
                             </>
                             
                         )
@@ -108,7 +108,7 @@ export default function LeaderboardPageComponent(){
 
                         return(
                             <>
-                         {el.game.play_count}<br/>   
+                         <span>{el.game.play_count}</span><br/>
                             </>
 
                         )
@@ -120,7 +120,7 @@ export default function LeaderboardPageComponent(){
                     dataGame.map(el => {
                         return(
                             <>
-                              {el.game.score}<br/>
+                              <span >{el.game.score}</span><br/>
                             </>
 
                         )

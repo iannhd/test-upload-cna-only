@@ -6,7 +6,24 @@
     height: 100vh;
     
     color: white;
+
+    .text-heading{
+        margin-top: 25px;
+    }
     table{
+        margin-top: 35px;
+        background-color: rgba(0, 0, 0, 0.841);
         color: white;
+        border-radius: 8px;
+        span{
+            font-size: 24px;
+            line-height: 35px;
+            cursor: pointer;
+            
+        }
+        span:hover{
+            color: rgb(211, 179, 0);
+        }
+        
     }
 }
