@@ -12,9 +12,12 @@ import '../components/leaderboard-page/leaderboardPageStyle.scss'
 import { nextStore, store } from '../redux/index'
 import { Provider } from 'react-redux'
 import { useEffect } from 'react'
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function MyApp({ Component, pageProps }) {
+  
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
   }, []);
@@ -22,6 +25,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Provider store={store}>
         <Component {...pageProps} />
+        <ToastContainer/>
       </Provider>
     </>
   ) 
