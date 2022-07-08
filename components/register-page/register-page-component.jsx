@@ -255,29 +255,9 @@ console.log("data", data);
                           })}
                         </Input>
                         </div>
-                        {/* <div className="container">
-                        <form className="form" method="post" onChange={handleOnChange} onSubmit={handleOnSubmit2}>
-                              <input type="file" name="file" />
-                            
-                              <img src={imageSrc} />
-                              
-                              {imageSrc && !uploadData && (
-                                  <button>Upload Files</button>
-                              )}
-
-                              {uploadData && (
-                                <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
-                              )}
-                       </form>
-                       </div> */}
-                        
                         <div method="post" className="mt-3" onChange={handleOnChange}>
-                        <input type="file" name="file" />
-                            
+                          <input type="file" name="file" />
                             <img src={imageSrc} width="100" height="100"/>
-                            
-                            
-
                             {uploadData && (
                               <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
                             )}
