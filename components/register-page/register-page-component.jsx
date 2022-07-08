@@ -68,7 +68,7 @@ export default function RegisterPageComponent() {
         console.log("data", data);
         const responseCreateUser = await createUserWithEmailAndPassword(auth, email, password);
         const user = responseCreateUser.user;
-        if (user) toast.success('Register Success', {autoClose:false})
+        if (user) toast.success('Register Success', {autoClose:10000})
         console.log(user, "=====> ini user");
         await updateProfile(user, {displayName : username,photoURL : data.secure_url })
         router.push('/login-page')

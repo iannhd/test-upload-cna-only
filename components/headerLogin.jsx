@@ -35,6 +35,7 @@ export default function Header(props) {
         signOut(auth).then(() => {
         sessionStorage.removeItem('token')
         logout()
+        toast.warning('Logout Success', {autoClose:10000})
         }).catch((error) => {
             console.log(error.message, '====> dari logout');
         });
