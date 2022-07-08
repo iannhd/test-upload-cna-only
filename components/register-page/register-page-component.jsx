@@ -46,11 +46,6 @@ export default function RegisterPageComponent() {
 
       let dateTime = date+' '+time;
       await set(ref(db, `users/` + user.displayName),
-        //  {[]
-        //   email: email,
-        //   username: username,
-        //   game: gameChoice
-        // });
       {
         email : email, 
         username : username, 
@@ -261,7 +256,6 @@ console.log("data", data);
                             {uploadData && (
                               <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
                             )}
-
                         </div>
                         <div>
                         <p>Already have an account ?  <span>
