@@ -24,37 +24,46 @@ export default function LeaderboardPageComponent(){
                 const childData = childSnapshot.val();
                 // console.log(childKey, "====> ini ChdildKey");
                 // console.log(childData, "====> ini ChildData");
-                // console.log(childData.game, "===> ini child data game");
+                // console.log(childData.game_id, "===> ini child data game");
                 getData.push({
                     username : childData.username,
-                    game : childData.game,
+                    game : childData.game_id,
                     key : childKey
                 })
+                setNumpangData(getData)
             })
-            setNumpangData(getData)
-            console.log(Object.entries(numpangData), "===> ini numpang data");
-            let userName = []
-            numpangData.forEach((game)=>{
-
-                if(game.game_id){
-                    console.log(game.game_id, "===> game");
-                }
-
-                if (game.username) {
-                    userName.push(game.username) 
-                    return
-                }
-
-            })
-            console.log(userName, "===> ini username");
-        }
-        )
+        })
     }
+           
+            console.log(Object.entries(numpangData), "===> ini numpang data");
+            let dataGame = []
+            numpangData.forEach((user)=>{
+                // console.log((user.game), "===> dari forEach");
+                if(user.game && user.username) {
+                    // console.log(user, "===> ini dari dalam IF");
+                    dataGame.push(user)
+
+                }})
+
+                // console.log(userName, "====> ini dari userName");
+                console.log(dataGame, "====> ini dari dataGame");
+                // if(game.game_id){
+                //     console.log(game.game_id, "===> game");
+                // }
+
+                // if (game.username) {
+                //     userName.push(game.username) 
+                //     return
+                
+        
+
+
 
     useEffect(()=>{
         fetchDataFromDB()
         if(loading)return;
     },[])
+    
        
         
        
@@ -68,7 +77,7 @@ export default function LeaderboardPageComponent(){
                 <Row>
                 <h1>ROCK PAPER SCISSORS</h1>
                     <Col>
-                    <Table>
+                    <Table className='text-center'>
                     <thead>
                     <tr>
                         <th>USER</th>
@@ -76,23 +85,51 @@ export default function LeaderboardPageComponent(){
                         <th>Score</th>
                     </tr>
                     </thead>
-            {
-                // numpangData.map(value =>{
-                //     console.log(value.username, "===> oi oi");
-                //     let userName = value.username
-                //     return(
+                    <tbody>
+                    <tr>
+                        <th>
+            {  
+                    dataGame.map(el => {
 
-                //         <tbody>
-                //         <tr>
-                //         <td key={value.username}>
-                //             {userName}
-                //         </td>
-                //         </tr>
-                //         </tbody>
-                        
-                //     )
-                // })
+                        return(
+                            <>
+                            {el.username}<br/>
+                            </>
+                            
+                        )
+                    })
             }
+            
+                    </th>
+                        <th>
+                    {
+                    dataGame.map(el => {
+
+
+                        return(
+                            <>
+                         {el.game.play_count}<br/>   
+                            </>
+
+                        )
+                    })
+            }
+                        </th>
+                        <th>
+                    {
+                    dataGame.map(el => {
+                        return(
+                            <>
+                              {el.game.score}<br/>
+                            </>
+
+                        )
+                    })
+            }
+                        </th>
+            
+                    </tr>
+                    </tbody>
                     </Table>
                     </Col>
                 </Row>
@@ -100,5 +137,5 @@ export default function LeaderboardPageComponent(){
             </section>
             </>
         )
-        
+    
 }
