@@ -9,6 +9,7 @@ import Link from "next/link";
 
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useEffect } from "react";
+// import styles from "../../styles/Home.module.scss"
 
 export default function RegisterPageComponent() {
   const [email, setEmail] = useState("");
@@ -21,6 +22,10 @@ export default function RegisterPageComponent() {
   const [city, setCity] = useState("");
   const [socialMediaUrl, setSocialMediaUrl] = useState("");
   const [gameList, setGameList] = useState([]);
+  const [imageSrc, setImageSrc] = useState();
+  const [uploadData, setUploadData] = useState();
+  const [isNext,setIsNext] = useState(false);
+  const [isPhoto,setIsPhoto] = useState(false)
   const router = useRouter()
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +34,7 @@ export default function RegisterPageComponent() {
       const user = res.user;
       if (user) alert("Register Success");
       console.log(user, "=====> ini user");
-      await updateProfile(user, {displayName : username})
+      await updateProfile(user, {displayName : username,photoURL : data.secure_url })
       // router.push('/login-page')
       console.log(gameChoice, "====> ini game choice");
 
@@ -63,8 +68,113 @@ export default function RegisterPageComponent() {
       alert(err.message);
     }
     console.log(email, password);
-
   };
+
+  function handleOnChange(changeEvent) {
+    const reader = new FileReader();
+    setIsPhoto(true)
+
+    reader.onload = function(onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+      setUploadData(undefined);
+    }
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+  }
+
+  async function handleOnSubmit2(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const fileInput = Array.from(form.elements).find(({ name }) => name === 'file')
+    
+
+    const formData = new FormData();
+
+    for (const file of fileInput.files){
+      formData.append('file', file)
+    }
+
+      formData.append('upload_preset', 'demo-image')
+    const data = await fetch('https://api.cloudinary.com/v1_1/dnneax9ui/image/upload',{
+      method: 'POST',
+      body: formData
+}).then(r => r.json());
+
+setImageSrc(data.secure_url)
+
+console.log("data", data);
+    }
+
+    async function handleSubmitTesting(event){
+      try {
+      console.log(isPhoto, "===> ini foto" );
+        if(isPhoto){
+        event.preventDefault();
+        const form = event.currentTarget;
+        const fileInput = Array.from(form.elements).find(({ name }) => name === 'file')
+
+
+        const formData = new FormData();
+
+        for (const file of fileInput.files){
+          formData.append('file', file)
+        }
+
+          formData.append('upload_preset', 'demo-image')
+          const data = await fetch('https://api.cloudinary.com/v1_1/dnneax9ui/image/upload',{
+                method: 'POST',
+                body: formData
+        }).then(r => r.json());
+
+        setImageSrc(data.secure_url)
+
+        console.log("data", data);
+        const responseCreateUser = await createUserWithEmailAndPassword(auth, email, password);
+        const user = responseCreateUser.user;
+        if (user) alert("Register Success");
+        console.log(user, "=====> ini user");
+        await updateProfile(user, {displayName : username,photoURL : data.secure_url })
+        router.push('/login-page')
+        console.log(gameChoice, "====> ini game choice");
+  
+        let today = new Date()
+  
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  
+        let dateTime = date+' '+time;
+        await set(ref(db, `users/` + user.displayName),
+            //  {[]
+            //   email: email,
+            //   username: username,
+            //   game: gameChoice
+            // });
+          {
+            email : email, 
+            username : username, 
+            game_id : {
+              game_id : gameChoice,
+              game_name : gameName,
+              play_count : 0,
+              score : 0
+            },
+            created_at : dateTime
+          })
+        setIsNext(true)
+      }else{
+        alert("No Photo Selected")
+      }
+      
+        
+        
+        
+        
+      } catch (err) {
+        console.error(err);
+        alert(err.message);
+      }
+    }
 
 
   useEffect(() => {
@@ -100,7 +210,7 @@ export default function RegisterPageComponent() {
         <Header title="Register" />
             <div className="container">
                     <div className="card login-card">
-                        <form onSubmit={handleSubmit} className="row" >
+                        <form onSubmit={handleSubmitTesting} className="row" >
                         <div className="form-group col-6 text-left">
                             <label htmlFor="exampleInputEmail1">Email address</label>
                             <input
@@ -145,11 +255,41 @@ export default function RegisterPageComponent() {
                           })}
                         </Input>
                         </div>
+                        {/* <div className="container">
+                        <form className="form" method="post" onChange={handleOnChange} onSubmit={handleOnSubmit2}>
+                              <input type="file" name="file" />
+                            
+                              <img src={imageSrc} />
+                              
+                              {imageSrc && !uploadData && (
+                                  <button>Upload Files</button>
+                              )}
+
+                              {uploadData && (
+                                <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
+                              )}
+                       </form>
+                       </div> */}
+                        
+                        <div method="post" className="mt-3" onChange={handleOnChange}>
+                        <input type="file" name="file" />
+                            
+                            <img src={imageSrc} width="100" height="100"/>
+                            
+                            
+
+                            {uploadData && (
+                              <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
+                            )}
+
+                        </div>
+                        <div>
                         <p>Already have an account ?  <span>
                             <Link href="/login-page" >Login
                             </Link>
                         </span>
                         </p>
+                        </div>
                         <button
                               type="submit"
                               className="btn btn-warning">
@@ -159,6 +299,7 @@ export default function RegisterPageComponent() {
                     </div>
             </div>
       </section>
+      
     </>
   );
 }

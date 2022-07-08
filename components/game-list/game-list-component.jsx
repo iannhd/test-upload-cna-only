@@ -81,7 +81,7 @@ const GameList = () => {
                         color="primary"
                         onClick={(e) => {
                             e.preventDefault()
-                            router.push(`/${game.game_url ? game.game_url/user : ""}`)}}
+                            router.push(`/${game.game_url ? game.game_url : ""}`)}}
                     >
                         Play Game
                     </Button>

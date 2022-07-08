@@ -32,12 +32,12 @@ export default function LeaderboardPageComponent(){
                 })
             })
             setNumpangData(getData)
-            // console.log(numpangData, "===> ini numpang data");
+            console.log(Object.entries(numpangData), "===> ini numpang data");
             let userName = []
             numpangData.forEach((game)=>{
 
-                if(game){
-                    console.log(game, "===> game");
+                if(game.game_id){
+                    console.log(game.game_id, "===> game");
                 }
 
                 if (game.username) {
@@ -45,8 +45,8 @@ export default function LeaderboardPageComponent(){
                     return
                 }
 
-                console.log(userName, "===> ini username");
             })
+            console.log(userName, "===> ini username");
         }
         )
     }
