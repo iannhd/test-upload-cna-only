@@ -46,11 +46,6 @@ export default function RegisterPageComponent() {
 
       let dateTime = date+' '+time;
       await set(ref(db, `users/` + user.displayName),
-        //  {[]
-        //   email: email,
-        //   username: username,
-        //   game: gameChoice
-        // });
       {
         email : email, 
         username : username, 
