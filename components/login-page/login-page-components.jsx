@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { setToken } from '../../redux/actions';
 import { useAuthState } from "react-firebase-hooks/auth";
 import Link from 'next/link';
+import { ToastContainer, toast } from 'react-toastify'
 
 
 
@@ -27,7 +28,8 @@ export default function LoginPageComponent(props) {
             .then(response)
                 console.log(response, '==> response dari login');
             if (response) {
-                // alert('Login Success');
+                toast.success('login successful', {autoClose:false})
+                // alert("Login success")
                 console.log(response.user.accessToken, '==> response success')
                 let token = response.user.accessToken
 
