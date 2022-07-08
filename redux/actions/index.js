@@ -23,7 +23,7 @@ export function setToken(uid) {
                 })
                 dispatch({
                     type: "USER_LOGOUT",
-                    payload: console.log("masuk sini")
+                    payload: console.log(typeof(getUser))
                 })
                     } else {
                         console.log("No data available");

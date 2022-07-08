@@ -17,7 +17,7 @@ export default function reducers(state = initialState, action) {
             return { ...state, total_score:action.payload}
         case 'USER_LOGOUT':
             console.log(action.payload, 'payload logout')
-            return {...state, userName: action.payload}
+            return {...state, userLoggedOut: action.payload}
         default:
         return state;
     }
