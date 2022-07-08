@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useState } from "react";
 import Header from "../header"
 import HeaderLogin from '../headerLogin'
@@ -9,6 +9,10 @@ import { Container, Row, Col, Table } from 'reactstrap';
 import { useRouter } from 'next/router'
 import Link from "next/link";
 import { list } from 'firebase/storage';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
+
+
 export default function LeaderboardPageComponent(){
     
     const [numpangData, setNumpangData] = useState([])
@@ -56,6 +60,22 @@ export default function LeaderboardPageComponent(){
                 //     return
                 
         
+                function exportToPdf() {
+                    screenShot()
+                }
+            
+                function screenShot() {
+                    const input = document.getElementById('LeaderboardPageComponent')
+                    html2canvas(input, {logging:true, letterRendering:1, useCORS:true})
+                    .then (canvas => {
+                        const imgWidth = 200;
+                        const imgHeight =  canvas.height * imgWidth / canvas.width;
+                        const imgData = canvas.toDataURL('img/png');
+                        const pdf = new jsPDF('p', 'mm', 'a4');
+                        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                        pdf.save('thegames.pdf')
+                    })
+                }
 
 
 
@@ -70,14 +90,17 @@ export default function LeaderboardPageComponent(){
         return(
             <>
             <section className="leaderboard-page">
+
             {
                 user ? <HeaderLogin title = "Leaderboard Page"/> : <Header title ="Leaderboard Page"/>
             }
             <Container>
                 <Row>
                 <h1 className='text-heading text-center'>ROCK PAPER SCISSORS</h1>
+                <button onClick={exportToPdf}>Export to PDF</button>
+
                     <Col>
-                    <Table className='text-center'>
+                    <Table id='LeaderboardPageComponent' className='text-center'>
                     <thead>
                     <tr>
                         <th>USER</th>

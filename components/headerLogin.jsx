@@ -94,7 +94,7 @@ export default function Header(props) {
                                 type="button"
                                 data-bs-toggle="dropdown"
                                 >
-                                <Image src={fox} width="20" height="20" alt="dropdown image" className="rounded-circle"/>
+                                <Image src={user.photoURL} width="40" height="40" alt="dropdown image" className="rounded-circle"/>
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li>

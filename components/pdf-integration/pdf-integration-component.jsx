@@ -25,7 +25,6 @@ export default function PdfIntegrationComponent() {
     return(
         <>
             <main id='pdfIntegrationComponent'>
-                <h1>PdfIntegrationComponent</h1>
                 <button onClick={exportToPdf}>Export to PDF</button>
             </main>
         </>
