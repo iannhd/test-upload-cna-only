@@ -54,12 +54,12 @@ export default function RegisterPageComponent() {
       {
         email : email, 
         username : username, 
-        game_id : {
-          game_id : gameChoice,
-          game_name : gameName,
-          play_count : 0,
-          score : 0
-          },
+        // game_id : {
+          // game_id : gameChoice,
+          // game_name : gameName,
+          // play_count : 0,
+          // score : 0
+          // },
         created_at : dateTime
         })
       
@@ -153,12 +153,12 @@ console.log("data", data);
           {
             email : email, 
             username : username, 
-            game_id : {
-              game_id : gameChoice,
-              game_name : gameName,
-              play_count : 0,
-              score : 0
-            },
+            // game_id : {
+            //   game_id : gameChoice,
+            //   game_name : gameName,
+            //   play_count : 0,
+            //   score : 0
+            // },
             created_at : dateTime
           })
         setIsNext(true)
