@@ -35,7 +35,7 @@ export default function HomePageComponent() {
       useEffect(() => {
         let token = sessionStorage.getItem('token')
         if (!token) {
-          alert('hehehhe')
+          toast.warning('You must be Signed in to access this page', {autoClose:10000})
           router.push('/')
       // return
     } else

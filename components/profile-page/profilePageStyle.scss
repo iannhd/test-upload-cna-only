@@ -1,0 +1,69 @@
+*, h1, h2, h3, h4, h5, h6{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.profilePage{
+    height: 100vh;
+    background-image: url('../../public//assets//img//requirements.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.wrapper {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    
+    
+    .card{
+        margin-top: 3%;
+        width: 400px;
+        height: 550px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.93);
+        color: rgb(0, 0, 0);
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        border: 2px solid white;
+        .profilePicture{
+            flex: 1;
+            justify-content: center;
+            border-radius: 50%;
+            margin: auto;
+            border: 1px solid white;
+        }
+        .cardTitle{
+            flex: 1;
+            padding-top: 40px;
+            h3{
+                margin: 0;
+                padding-top: 20px;
+            }
+        }
+        .cardContent{
+            flex: 2;
+            height: max-content;
+            .username, .email, .gamePlayed, .gamePlayed{
+                padding: 10px 0;
+            }
+             .btn{
+                padding: 15px 40px;
+               
+                background-color: rgb(6, 89, 255);
+                color: white;
+                transition: all 0.1s;
+
+                &.btn:hover{
+                    transform: scale(0.98);
+                    background-color: rgb(3, 3, 220);
+                }
+                
+            }
+        }
+       
+    }
+}

@@ -34,10 +34,10 @@ export default function Header(props) {
         signOut(auth)
         .then(() => {
         sessionStorage.removeItem('token')
-        router.reload()
-        })
-        .catch((error) => {
-            console.log(error.message, '====> error dari logout');
+        logout()
+        toast.warning('Logout Success', {autoClose:5000})
+        }).catch((error) => {
+            console.log(error.message, '====> dari logout');
         });
         console.log('User signed out!');
     }

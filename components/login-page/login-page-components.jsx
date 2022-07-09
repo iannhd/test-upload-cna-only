@@ -28,7 +28,7 @@ export default function LoginPageComponent(props) {
             .then(response)
                 console.log(response, '==> response dari login');
             if (response) {
-                toast.success('login successful', {autoClose:false})
+                toast.success('login successful', {autoClose:5000})
                 // alert("Login success")
                 console.log(response.user.accessToken, '==> response success')
                 let token = response.user.accessToken
