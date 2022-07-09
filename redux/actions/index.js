@@ -13,7 +13,7 @@ export function setToken(uid) {
                     console.log("masuk siniii");
                     const getUser = snapshot.val()
                     console.log(getUser, '=====> dari actions redux ');
-                    console.log(getUser.game_id.game_name, "===> ini dari redux game name");
+                    console.log(getUser.username, "===> ini dari redux game name");
                 dispatch({
                     type: 'SET_USERNAME',
                     payload: getUser.username
