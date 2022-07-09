@@ -11,6 +11,7 @@ import { ref, onValue, get, child, set } from 'firebase/database';
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from 'next/router';
 import Header from '../headerLogin'
+import { toast } from 'react-toastify';
 
 export default function GamePRSPage() {
 
@@ -91,7 +92,8 @@ export default function GamePRSPage() {
   useEffect(() => {
     let token = sessionStorage.getItem('token')
     if (!token) {
-      alert('You must be Signed in to access this page')
+      toast.warning('You must be Signed in to access this page', {autoClose:5000})
+      
       router.push('/')
       return
     }
@@ -159,7 +161,7 @@ export default function GamePRSPage() {
     setScore(score)
     setScoreComp(scoreComp)
     writeUserData()
-    alert('Score Has Been Reset')
+    toast.success('Score Has Been Reset', {autoClose:5000})
   }
 
   return(
@@ -178,7 +180,7 @@ export default function GamePRSPage() {
                   onClick={handlePlayerHand}
                   height={100}
                   width={100}
-                  src={rock} 
+                  src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340973/batu_k8wwcl.png"} 
                   id="playerRock"
                   alt="rock" />
                 </button>
@@ -186,7 +188,7 @@ export default function GamePRSPage() {
                   <Image onClick={handlePlayerHand}
                   height={100}
                   width={100}
-                  src={paper}
+                  src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340964/kertas_tmbnsq.png"}
                   id="playerPaper"
                   alt="paper" />
                 </button>
@@ -194,7 +196,7 @@ export default function GamePRSPage() {
                   <Image onClick={handlePlayerHand}
                   height={100}
                   width={100}
-                  src={scissors}
+                  src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340964/kertas_tmbnsq.png"}
                   id="playerScissors" alt="scissors" />
                 </button>
                 <div>
@@ -218,13 +220,13 @@ export default function GamePRSPage() {
                       height={100}
                       width={100}
                       className="choiceImg" 
-                      src={rock}
+                      src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340973/batu_k8wwcl.png"}
                       id="comRock"
                       alt="rock" />
                       </button>
                       <button>
                         <Image 
-                      height={100} width={100} className="choiceImg" src={paper} id="comPaper"
+                      height={100} width={100} className="choiceImg" src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340964/kertas_tmbnsq.png"} id="comPaper"
                       alt="paper" />
                       </button>
                       <button>
@@ -232,7 +234,7 @@ export default function GamePRSPage() {
                       height={100} 
                       width={100} 
                       className="choiceImg" 
-                      src={scissors} 
+                      src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340965/gunting_ar1xnd.png"} 
                       id="comScissors"
                       alt="scissors" />
                       </button>
@@ -253,7 +255,7 @@ export default function GamePRSPage() {
                             style={{ cursor: 'pointer' }}
                             height={100} 
                             width={100} 
-                            className="choiceImg" src={refresh} 
+                            className="choiceImg" src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340966/refresh_mgjpot.png"} 
                             id="refresh"
                             alt="" />
                     </div>
