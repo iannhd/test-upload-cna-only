@@ -57,7 +57,7 @@ export default function ProfilePageComponent() {
                 <div className="card">
                     <div className="cardTitle">
                         <div className="profilePicture">
-                        <Image  className='rounded-circle' src={user.photoURL} width="150" height="150"></Image>
+                        <Image  className='rounded-circle' src={user.photoURL ? user.photoURL : ""} width="150" height="150"></Image>
                         </div>
                        
                     </div>
@@ -74,7 +74,7 @@ export default function ProfilePageComponent() {
                                 <h3>Game Played</h3>
                             </div>
                             <div className="playedGame">
-                                <h6>- {game_name} : High Score ({totalScore} pts)</h6>
+                                <h6>- {game_name} : High Score ({totalScore ? totalScore : "Not Yet Played"} pts)</h6>
                             </div>
                         </div>
                     </div>
