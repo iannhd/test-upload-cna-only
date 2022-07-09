@@ -1,12 +1,18 @@
 .navbar {
   background-color: rgba(48, 48, 48, 0.6)!important;
   line-height: 30px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
   .navbrand {
     a{
       color: white;
       text-decoration: none;
       font-weight: 700;;
     }
+  }
+  .collapse-nav{
+    justify-content: space-around;
   }
 
   .active{
@@ -15,10 +21,12 @@
       font-weight: 600;
     }
   }
-
   .navitem {
+    display: flex;
+    justify-content: space-between;
     font-weight: 600;
     color: white;
+    list-style: none;
     
     &.navitem:hover{
       color: white;
@@ -28,6 +36,7 @@
 
   .text-link{
     text-decoration: none;
+
     color: rgb(189, 189, 189);
     padding: 0 5px;
 

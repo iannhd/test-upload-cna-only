@@ -54,7 +54,7 @@ export default function Header(props) {
                 </div>
                 <NavbarToggler  onClick={handleToggle} />
                 <Collapse isOpen={isOpen ? isOpen : ""} navbar
-                className='ms-5'>
+                className='mx-auto collapse-nav'>
                 <nav className="navbarUser">
                     <NavItem className={router.pathname == "/home-page" ? "active" : "navitem"}>
                         <Link href={username ? "/home-page" : "/"} >
