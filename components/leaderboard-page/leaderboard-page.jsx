@@ -22,15 +22,14 @@ export default function LeaderboardPageComponent(){
             snapshot.forEach((childSnapshot) => {
                 const childKey = childSnapshot.key;
                 const childData = childSnapshot.val();
-                // console.log(childKey, "====> ini ChdildKey");
-                // console.log(childData, "====> ini ChildData");
-                // console.log(childData.game_id, "===> ini child data game");
                 getData.push({
                     username : childData.username,
                     game : childData.game_id,
                     key : childKey
                 })
+
                 setNumpangData(getData)
+
             })
         })
     }
@@ -38,22 +37,12 @@ export default function LeaderboardPageComponent(){
             console.log(Object.entries(numpangData), "===> ini numpang data");
             let dataGame = []
             numpangData.forEach((user)=>{
-                // console.log((user.game), "===> dari forEach");
                 if(user.game && user.username) {
-                    // console.log(user, "===> ini dari dalam IF");
                     dataGame.push(user)
 
                 }})
 
-                // console.log(userName, "====> ini dari userName");
                 console.log(dataGame, "====> ini dari dataGame");
-                // if(game.game_id){
-                //     console.log(game.game_id, "===> game");
-                // }
-
-                // if (game.username) {
-                //     userName.push(game.username) 
-                //     return
                 
         
 
@@ -90,7 +79,7 @@ export default function LeaderboardPageComponent(){
                         <th>
             {  
                     dataGame.map(el => {
-
+                        console.log(el, "===> ini el")
                         return(
                             <>
                             <span>{el.username.toUpperCase()}</span><br/>
@@ -120,7 +109,7 @@ export default function LeaderboardPageComponent(){
                     dataGame.map(el => {
                         return(
                             <>
-                              <span >{el.game.score}</span><br/>
+                              <span >{el.game.total_score ? el.game.total_score : "Not Played Yet"}</span><br/>
                             </>
 
                         )
