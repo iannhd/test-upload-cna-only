@@ -11,6 +11,7 @@ import { ref, onValue, get, child, set } from 'firebase/database';
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from 'next/router';
 import Header from '../headerLogin'
+import { toast } from 'react-toastify';
 
 export default function GamePRSPage() {
 
@@ -29,12 +30,25 @@ export default function GamePRSPage() {
     // get(child(ref(db), `users/${user.uid}`))
     get(child(ref(db), `users/${user.displayName}`))
       .then((snapshot) => {
+        // let dataUser = []
         if (snapshot.exists()) {
-          // console.log(snapshot.val(), '==> snapshot');
+          // // console.log(snapshot.val(), '==> snapshot');
           setUserData(snapshot.val());
-          console.log(userData, '==> set userdata');
-          // console.log(Object.entries(userData), '==> set userdata');
-          console.log(user, '==> ini user')
+          // console.log(typeof(userData), '==> set userdata');
+          console.log(Object.entries(userData), '==> set userdata');
+          // console.log(user, '==> ini user')
+
+          // Object.entries(userData).map((a) => console.log(a, '==> ini aaaaaa'))
+          // const hasilDelete = deleteAr.splice(0,1)
+          // console.log(hasilDelete, '==> ini delete array')
+          // deleteAr.forEach((data) => {
+          //   console.log(data, '==> ini data foreach')
+          //   console.log(data.created_at, '==> ini data foreach created_at')
+          //   console.log(data.email, '==> ini data foreach email')
+          //   console.log(data.game_id, '==> ini data foreach game_id')
+          //   console.log(data.play_count, '==> ini data foreach play_count')
+          //   console.log(data.total_score, '==> ini data foreach total_score')
+          // })
         } else {
           console.log("No data available");
         }
@@ -55,9 +69,14 @@ export default function GamePRSPage() {
   }
 
   function writeUserData() {
-    set(ref(db, 'users/' + user.displayName), {
-      ...userData, total_score: + score,
-      // ...Object.entries(userData)[2], total_score: + score,
+    // const userDataAr = Object.entries(userData)
+    // console.log(userDataAr, '==> user Data Ar')
+    set(ref(db, 'users/' + user.displayName + "/game_id/"), {
+      game_id: "21c39cc6-289b-47c4-879d-d52e47f8d7b8",
+      game_name: "Rock Paper Scissor",
+      total_score: + score,
+    //   // ...userDataAr, total_score: + score,
+    //   // ...Object.entries(userData)[2], total_score: + score,
       play_count: + playCount
       
     });
@@ -73,7 +92,8 @@ export default function GamePRSPage() {
   useEffect(() => {
     let token = sessionStorage.getItem('token')
     if (!token) {
-      alert('You must be Signed in to access this page')
+      toast.warning('You must be Signed in to access this page', {autoClose:5000})
+      
       router.push('/')
       return
     }
@@ -141,7 +161,7 @@ export default function GamePRSPage() {
     setScore(score)
     setScoreComp(scoreComp)
     writeUserData()
-    alert('Score Has Been Reset')
+    toast.success('Score Has Been Reset', {autoClose:5000})
   }
 
   return(
@@ -160,7 +180,7 @@ export default function GamePRSPage() {
                   onClick={handlePlayerHand}
                   height={100}
                   width={100}
-                  src={rock} 
+                  src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340973/batu_k8wwcl.png"} 
                   id="playerRock"
                   alt="rock" />
                 </button>
@@ -168,7 +188,7 @@ export default function GamePRSPage() {
                   <Image onClick={handlePlayerHand}
                   height={100}
                   width={100}
-                  src={paper}
+                  src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340964/kertas_tmbnsq.png"}
                   id="playerPaper"
                   alt="paper" />
                 </button>
@@ -176,7 +196,7 @@ export default function GamePRSPage() {
                   <Image onClick={handlePlayerHand}
                   height={100}
                   width={100}
-                  src={scissors}
+                  src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340964/kertas_tmbnsq.png"}
                   id="playerScissors" alt="scissors" />
                 </button>
                 <div>
@@ -200,13 +220,13 @@ export default function GamePRSPage() {
                       height={100}
                       width={100}
                       className="choiceImg" 
-                      src={rock}
+                      src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340973/batu_k8wwcl.png"}
                       id="comRock"
                       alt="rock" />
                       </button>
                       <button>
                         <Image 
-                      height={100} width={100} className="choiceImg" src={paper} id="comPaper"
+                      height={100} width={100} className="choiceImg" src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340964/kertas_tmbnsq.png"} id="comPaper"
                       alt="paper" />
                       </button>
                       <button>
@@ -214,7 +234,7 @@ export default function GamePRSPage() {
                       height={100} 
                       width={100} 
                       className="choiceImg" 
-                      src={scissors} 
+                      src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340965/gunting_ar1xnd.png"} 
                       id="comScissors"
                       alt="scissors" />
                       </button>
@@ -235,7 +255,7 @@ export default function GamePRSPage() {
                             style={{ cursor: 'pointer' }}
                             height={100} 
                             width={100} 
-                            className="choiceImg" src={refresh} 
+                            className="choiceImg" src={"https://res.cloudinary.com/dnneax9ui/image/upload/v1657340966/refresh_mgjpot.png"} 
                             id="refresh"
                             alt="" />
                     </div>

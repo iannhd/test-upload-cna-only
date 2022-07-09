@@ -68,7 +68,7 @@ export default function RegisterPageComponent() {
         console.log("data", data);
         const responseCreateUser = await createUserWithEmailAndPassword(auth, email, password);
         const user = responseCreateUser.user;
-        if (user) toast.success('Register Success', {autoClose:10000})
+        if (user) toast.success('Register Success', {autoClose:5000})
         console.log(user, "=====> ini user");
         await updateProfile(user, {displayName : username,photoURL : data.secure_url })
         router.push('/login-page')
@@ -90,17 +90,17 @@ export default function RegisterPageComponent() {
           {
             email : email, 
             username : username, 
-            game_id : {
-              game_id : gameChoice,
-              game_name : gameName,
-              play_count : 0,
-              score : 0
-            },
+            // game_id : {
+            //   game_id : gameChoice,
+            //   game_name : gameName,
+            //   play_count : 0,
+            //   score : 0
+            // },
             created_at : dateTime
           })
         setIsNext(true)
       }else{
-        toast.warning('No Photo Selected', {autoClose:false})
+        toast.warning('No Photo Selected', {autoClose:5000})
       }
       
         

@@ -18,7 +18,6 @@ export default function Header(props) {
     const router = useRouter()
     const username = useSelector(state => state.username)
     const totalScore = useSelector(state => state.total_score)
-
     useEffect(() => {
         console.log(username, '==> username header login');
         console.log(totalScore, '==> totalScore header login');
@@ -32,15 +31,15 @@ export default function Header(props) {
         e.preventDefault();
         // const logout = useSelector(state => state.userName)
         const auth = getAuth();
-        signOut(auth).then(() => {
+        signOut(auth)
+        .then(() => {
         sessionStorage.removeItem('token')
         logout()
-        toast.warning('Logout Success', {autoClose:10000})
+        toast.warning('Logout Success', {autoClose:5000})
         }).catch((error) => {
             console.log(error.message, '====> dari logout');
         });
         console.log('User signed out!');
-        // router.push('/')
     }
     return(
         <div>
@@ -95,7 +94,7 @@ export default function Header(props) {
                                 type="button"
                                 data-bs-toggle="dropdown"
                                 >
-                                <Image src={fox} width="20" height="20" alt="dropdown image" className="rounded-circle"/>
+                                <Image src={user.photoURL} width="40" height="40" alt="dropdown image" className="rounded-circle"/>
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li>
