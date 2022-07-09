@@ -1,25 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router';
 import Link from "next/link"
+import { auth, db } from "../../services/firebase";
+import { useAuthState } from "react-firebase-hooks/auth"
+
 
 
 
 
 export default function ErrorPage() {
-    const [seconds, setShowSeconds] = useState(5)
     const router = useRouter();
+    const [user, loading] = useAuthState(auth);
+
 
     function timerFunction() {
-        router.push('/')
+        let token = sessionStorage.getItem('token')
+        if(token){
+            console.log("masuk user");
+            router.push('/home-page')
+        } else {
+            console.log("bukan user");
+            router.push('/')
+        }
     }
 
     useEffect(() => {
         setTimeout(() => {
-            console.log('test');
-            setShowSeconds(seconds--)
             timerFunction()
+            console.log('test');
+            if(loading)return
         },5000)
-    })
+    },[])
 
     return (
         <>
