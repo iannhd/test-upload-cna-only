@@ -19,7 +19,7 @@ export default function LandingPageComponent() {
         <Header title='Landing Page'/>
         <div className='wrapperUp'>
           <div className='content'>
-            <h1>PLAY TRADITIONAL GAME</h1>
+            <h1>PLAY TRADITIONAL GAME ONLY</h1>
             <h3>Experience New Traditional Game Play</h3>
             <div>
               <Button color="warning" size="lg">
